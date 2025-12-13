@@ -50,6 +50,14 @@ export async function POST(request: NextRequest) {
       TurnstileSiteKey,
       TurnstileSecretKey,
       DefaultUserTags,
+      EnableOIDCLogin,
+      EnableOIDCRegistration,
+      OIDCIssuer,
+      OIDCAuthorizationEndpoint,
+      OIDCTokenEndpoint,
+      OIDCUserInfoEndpoint,
+      OIDCClientId,
+      OIDCClientSecret,
     } = body as {
       SiteName: string;
       Announcement: string;
@@ -72,6 +80,14 @@ export async function POST(request: NextRequest) {
       TurnstileSiteKey?: string;
       TurnstileSecretKey?: string;
       DefaultUserTags?: string[];
+      EnableOIDCLogin?: boolean;
+      EnableOIDCRegistration?: boolean;
+      OIDCIssuer?: string;
+      OIDCAuthorizationEndpoint?: string;
+      OIDCTokenEndpoint?: string;
+      OIDCUserInfoEndpoint?: string;
+      OIDCClientId?: string;
+      OIDCClientSecret?: string;
     };
 
     // 参数校验
@@ -96,7 +112,15 @@ export async function POST(request: NextRequest) {
       (LoginRequireTurnstile !== undefined && typeof LoginRequireTurnstile !== 'boolean') ||
       (TurnstileSiteKey !== undefined && typeof TurnstileSiteKey !== 'string') ||
       (TurnstileSecretKey !== undefined && typeof TurnstileSecretKey !== 'string') ||
-      (DefaultUserTags !== undefined && !Array.isArray(DefaultUserTags))
+      (DefaultUserTags !== undefined && !Array.isArray(DefaultUserTags)) ||
+      (EnableOIDCLogin !== undefined && typeof EnableOIDCLogin !== 'boolean') ||
+      (EnableOIDCRegistration !== undefined && typeof EnableOIDCRegistration !== 'boolean') ||
+      (OIDCIssuer !== undefined && typeof OIDCIssuer !== 'string') ||
+      (OIDCAuthorizationEndpoint !== undefined && typeof OIDCAuthorizationEndpoint !== 'string') ||
+      (OIDCTokenEndpoint !== undefined && typeof OIDCTokenEndpoint !== 'string') ||
+      (OIDCUserInfoEndpoint !== undefined && typeof OIDCUserInfoEndpoint !== 'string') ||
+      (OIDCClientId !== undefined && typeof OIDCClientId !== 'string') ||
+      (OIDCClientSecret !== undefined && typeof OIDCClientSecret !== 'string')
     ) {
       return NextResponse.json({ error: '参数格式错误' }, { status: 400 });
     }
@@ -137,6 +161,14 @@ export async function POST(request: NextRequest) {
       TurnstileSiteKey,
       TurnstileSecretKey,
       DefaultUserTags,
+      EnableOIDCLogin,
+      EnableOIDCRegistration,
+      OIDCIssuer,
+      OIDCAuthorizationEndpoint,
+      OIDCTokenEndpoint,
+      OIDCUserInfoEndpoint,
+      OIDCClientId,
+      OIDCClientSecret,
     };
 
     // 写入数据库

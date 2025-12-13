@@ -340,6 +340,32 @@ function LoginPageClient() {
             </div>
           )}
         </form>
+
+        {/* OIDC登录按钮 */}
+        {siteConfig?.EnableOIDCLogin && shouldAskUsername && (
+          <div className='mt-6'>
+            <div className='relative'>
+              <div className='absolute inset-0 flex items-center'>
+                <div className='w-full border-t border-gray-300 dark:border-gray-600'></div>
+              </div>
+              <div className='relative flex justify-center text-sm'>
+                <span className='px-2 bg-white/60 dark:bg-zinc-900/60 text-gray-500 dark:text-gray-400'>
+                  或
+                </span>
+              </div>
+            </div>
+            <button
+              type='button'
+              onClick={() => window.location.href = '/api/auth/oidc/login'}
+              className='mt-4 w-full inline-flex justify-center items-center rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-zinc-800/60 backdrop-blur py-3 text-base font-semibold text-gray-700 dark:text-gray-200 shadow-sm transition-all duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700/60'
+            >
+              <svg className='w-5 h-5 mr-2' fill='currentColor' viewBox='0 0 20 20'>
+                <path fillRule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clipRule='evenodd' />
+              </svg>
+              使用OIDC登录
+            </button>
+          </div>
+        )}
       </div>
 
       {/* 版本信息显示 */}

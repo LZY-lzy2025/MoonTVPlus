@@ -41,6 +41,8 @@ export async function GET(request: NextRequest) {
     RegistrationRequireTurnstile: config.SiteConfig.RegistrationRequireTurnstile || false,
     LoginRequireTurnstile: config.SiteConfig.LoginRequireTurnstile || false,
     TurnstileSiteKey: config.SiteConfig.TurnstileSiteKey || '',
+    EnableOIDCLogin: config.SiteConfig.EnableOIDCLogin || false,
+    EnableOIDCRegistration: config.SiteConfig.EnableOIDCRegistration || false,
   };
   return NextResponse.json(result);
 }

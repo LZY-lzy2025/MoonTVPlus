@@ -31,6 +31,15 @@ export interface AdminConfig {
     TurnstileSiteKey?: string; // Cloudflare Turnstile Site Key
     TurnstileSecretKey?: string; // Cloudflare Turnstile Secret Key
     DefaultUserTags?: string[]; // 新注册用户的默认用户组
+    // OIDC配置
+    EnableOIDCLogin?: boolean; // 启用OIDC登录
+    EnableOIDCRegistration?: boolean; // 启用OIDC注册
+    OIDCIssuer?: string; // OIDC Issuer URL (用于自动发现)
+    OIDCAuthorizationEndpoint?: string; // 授权端点
+    OIDCTokenEndpoint?: string; // Token端点
+    OIDCUserInfoEndpoint?: string; // 用户信息端点
+    OIDCClientId?: string; // OIDC Client ID
+    OIDCClientSecret?: string; // OIDC Client Secret
   };
   UserConfig: {
     Users: {
